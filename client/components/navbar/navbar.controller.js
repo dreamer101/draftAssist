@@ -2,10 +2,16 @@
 
 angular.module('draftAssistApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
+    $scope.menu = [
+    {
       'title': 'Home',
       'link': '/'
-    }];
+    },
+    {
+      'title': 'Players',
+      'link': '/players'
+    }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
