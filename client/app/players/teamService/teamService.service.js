@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module(‘draftAssistApp')
-.service(‘teamService', function() {
+angular.module('draftAssistApp')
+.service('teamService', function() {
 
   var that = this;
 
