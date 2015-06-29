@@ -7,7 +7,7 @@ var PlayerSchema = new Schema({
   name:                 String,
   age:                  Number,
   team:                 String,
-  bye:                  Number,
+  bye:                  String,
   position:             String,
   qty:                  Number, // todo -> add league variables
   projPts:              Number,

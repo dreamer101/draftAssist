@@ -17,10 +17,10 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   team: [Team.schema]
-  facebook: {},
-  twitter: {},
-  google: {},
-  github: {}
+  // facebook: {},
+  // twitter: {},
+  // google: {},
+  // github: {}
 });
 
 /**

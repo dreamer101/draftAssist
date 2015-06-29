@@ -12,7 +12,7 @@
   <div class="list-group">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animate-roster"
-           ng-repeat="player in filteredPlayers = ( ctrl.roster | playerFilter : ctrl.searchText | orderBy: ['position', 'projPts'] )">
+           ng-repeat="player in filteredPlayers = ( ctrl.roster | playerFilter : ctrl.searchText | orderBy: 'projPts' )">
         <a ng-click="ctrl.goPlayer(player)" class="list-group-player">
           <h3>{{ player.name }}</h3>
           <article class="row">
@@ -44,7 +44,7 @@
   </div>
 </section>
 
-<section class="team text-center">
+<!-- <section class="team text-center">
   <h2>Your Team:</h2>
   <ul>
     <li class="team animate-team2" ng-repeat="teamPlayer in ctrl.team">
@@ -55,4 +55,4 @@
   <h3>Total Projected Points: {{ ctrl.total }} </h3>
   <br>
   <button class="btn btn-danger" ng-click="ctrl.clearTeam()">Clear Team</button>
-</section>
+</section> -->
