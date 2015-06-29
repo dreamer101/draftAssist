@@ -10,6 +10,8 @@ module.exports = function(app) {
 
   // Insert routes below
   app.use('/api/users', require('./api/team'));
+  app.use('/For the url of the endpoint, enter: /api/users/:userId/cart.', require('./api/team'));
+  app.use('/api/users', require('./api/team'));
   app.use('/api/players', require('./api/player'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
