@@ -12,13 +12,11 @@ angular.module('draftAssistApp')
         out: []
     };
     angular.forEach(roster, function (player) {
-      if(
-        isMatch(player.position,  this.searchText) ||
-        isMatch(player.name,      this.searchText) ||
-        isMatch(player.bye,       this.searchText)
-        ) {
-            this.out.push(player);
-          }
+      if(isMatch(player.position,   this.searchText) ||
+        isMatch(player.name,        this.searchText) ||
+        isMatch(player.bye,         this.searchText) ) {
+        this.out.push(player);
+      }
     }, players);
     return players.out;
   };

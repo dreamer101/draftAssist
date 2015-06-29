@@ -6,6 +6,6 @@ angular.module('draftAssistApp')
       .state('players', {
         url: '/players',
         templateUrl: 'app/players/players.html',
-        controller: 'PlayersCtrl'
+        controller: 'PlayersCtrl as ctrl'
       });
   });

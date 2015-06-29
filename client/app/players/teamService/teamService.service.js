@@ -1,44 +1,38 @@
 'use strict';
 
 angular.module('draftAssistApp')
-.service('teamService', function() {
+.service('teamService', function($http, Auth) {
 
   var that = this;
 
-  that.team = [];
-
-  function findPlayerById(players, id) {
-    return _.find(players, function(player) {
-      return player._id === id;
-    });
-  }
+ that.getTeam = function() {
+    var userId = Auth.getCurrentUser()._id;
+    return $http.get('/api/users/' + userId + '/team/');
+  };
 
   that.addPlayer = function(player) {
-    var found = findPlayerById(that.team, player._id);
-    if (found) {
-      found.qty += player.qty;
-    }
-    else {
-      that.team.push(angular.copy(player));
-    }
+    var userId = Auth.getCurrentUser()._id;
+    return $http.post('/api/users/' + userId + '/team/' + player._id);
   };
 
-  that.removePlayer = function(player) {
-    var index = that.team.indexOf(player);
-    that.team.splice(index, 1);
+  that.removePlayer = function(teamPlayer) {
+    var userId = Auth.getCurrentUser()._id;
+    return $http.delete('/api/users/' + userId + '/team/' + teamPlayer._id);
   };
 
-  that.getPoints = function(player) {
-    return player.qty * player.projPts;
+  that.getPoints = function(teamPlayer) {
+    return teamPlayer.qty * teamPlayer.player.projPts;
   };
 
-  that.getTotalpts = function() {
-    return _.reduce(that.team, function(sum, player) {
-      return sum + that.getPoints(player);
+  that.getTotal = function(team) {
+    var total = _.reduce(team, function(sum, teamPlayer) {
+      return sum + that.getPoints(teamPlayer);
     }, 0);
+    return total;
   };
 
   that.clearTeam = function() {
-    that.team.length = 0;
+    var userId = Auth.getCurrentUser()._id;
+    return $http.delete('/api/users/' + userId + '/team/');
   };
 });

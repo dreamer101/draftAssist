@@ -37,22 +37,22 @@
           <button class="btn btn-sm btn-success" ng-click="ctrl.addPlayer(player)">Add to Team</button>
         </div>
       </div>
-      <div class="animate-inventory text-center" ng-hide="filteredPlayers.length">
+      <div class="animate-roster text-center" ng-hide="filteredPlayers.length">
         <h3>No players match your search.</h3>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cart text-center">
+<section class="team text-center">
   <h2>Your Team:</h2>
   <ul>
     <li class="team animate-team2" ng-repeat="teamPlayer in ctrl.team">
-      <span>{{ player.qty + ' x ' + player.position + ' = ' + ctrl.getPoints(player) }}</span>
-      <button class="btn btn-danger btn-xs" ng-click="ctrl.removePlayer(player)">Remove Player</button>
+      <span>{{ teamPlayer.qty + ' x ' + teamPlayer.position + ' = ' + ctrl.getPoints(teamPlayer) }}</span>
+      <button class="btn btn-danger btn-xs" ng-click="ctrl.removePlayer(teamPlayer)">Remove Player</button>
     </li>
   </ul>
-  <h3>Total Projected Points:{{ ctrl.getTotalpts() }}</h3>
+  <h3>Total Projected Points: {{ ctrl.total }} </h3>
   <br>
   <button class="btn btn-danger" ng-click="ctrl.clearTeam()">Clear Team</button>
 </section>

@@ -9,7 +9,7 @@ var PlayerSchema = new Schema({
   team:                 String,
   bye:                  Number,
   position:             String,
-  qty:          { type: Number, min: 2, max: 4 }, // add league variables
+  qty:                  Number, // todo -> add league variables
   projPts:              Number,
   paTD:                 Number,
   ruTD:                 Number,
