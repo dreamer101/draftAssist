@@ -15,7 +15,7 @@ angular.module('draftAssistApp')
         out: []
     };
     angular.forEach(roster, function (player) {
-      if (isMatch(player.team   , this.searchText) ||
+      if (isMatch(player.position   , this.searchText) ||
           isMatch(player.name       , this.searchText) ||
           isMatch(player.bye       , this.searchText) ) {
         this.out.push(player);
@@ -23,23 +23,4 @@ angular.module('draftAssistApp')
     }, players);
     return players.out;
   };
-
-  // function isMatch(str, pattern) {
-  //   return str.toLowerCase().indexOf(pattern.toLowerCase()) !== -1;
-  // }
-
-  // return function(roster, searchText) {
-  //   var players = {
-  //       searchText: searchText,
-  //       out: []
-  //   };
-  //   angular.forEach(roster, function (player) {
-  //     if(isMatch(player.position,   this.searchText) ||
-  //       isMatch(player.name,        this.searchText) ||
-  //       isMatch(player.bye,         this.searchText) ) {
-  //       this.out.push(player);
-  //     }
-  //   }, players);
-  //   return players.out;
-  // };
 });

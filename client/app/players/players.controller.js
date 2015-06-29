@@ -16,48 +16,47 @@ angular.module('draftAssistApp')
     });
   };
 
-  that.goPlayer = function (player) {
-    $state.go( 'playerDetail', { playerId : player._id } );
-  };
+
+    teamService.getTeam().then(function(json) {
+      that.team = json.data;
+      that.total = teamService.getTotal(that.team);
+    });
 
   that.getRoster();
 
+  that.addPlayer = function(player) {
+    teamService.addPlayer(player).then(function(json) {
+      that.team = json.data;
+      that.total = teamService.getTotal(that.team);
+    }, function(err) {
+      console.log('ERROR: addPlayer post: ' + JSON.stringify(err));
+    });
+  };
 
-  //   teamService.getTeam().then(function(json) {
-  //     that.team = json.data;
-  //     that.total = teamService.getTotal(that.team);
-  //   });
-  // that.addPlayer = function(player) {
-  //   teamService.addPlayer(player).then(function(json) {
-  //     that.team = json.data;
-  //     that.total = teamService.getTotal(that.team);
-  //   }, function(err) {
-  //     console.log('ERROR: addPlayer post: ' + JSON.stingify(err));
-  //   });
-  // };
+  that.removePlayer = function(player) {
+    teamService.removePlayer(player).then(function(json) {
+      that.team = json.data;
+      that.total = teamService.getTotal(that.team);
+    }, function(err) {
+      console.log('ERROR: removePlayer delete: ' + JSON.stringify(err));
+    });
+  };
 
-  // that.removePlayer = function(player) {
-  //   teamService.removePlayer(player).then(function(json) {
-  //     that.team = json.data;
-  //     that.total = teamService.getTotal(that.team);
-  //   }, function(err) {
-  //     console.log('ERROR: removePlayer delete: ' + JSON.stingify(err));
-  //   });
-  // };
+  that.getPoints = function(player) {
+    return teamService.getPoints(player);
+  };
 
-  // that.getPoints = function(player) {
-  //   return teamService.getPoints(player);
-  // };
+  that.clearTeam = function() {
+    return teamService.clearTeam().then(function(json) {
+      that.team = json.data;
+      that.total = teamService.getTotal(that.team);
+    }, function(err) {
+      console.log('clearTeam delete ERROR: ' + JSON.stringify(err));
+    });
+  };
 
-  // that.clearTeam = function() {
-  //   return teamService.clearTeam().then(function(json) {
-  //     that.team = json.data;
-  //     that.total = teamService.getTotal(that.team);
-  //   }, function(err) {
-  //     console.log('clearTeam delete ERROR: ' + JSON.stingify(err));
-  //   });
-  // };
-
-
+   that.goPlayer = function (player) {
+    $state.go( 'playerDetail', { playerId : player._id } );
+  };
 
 });
