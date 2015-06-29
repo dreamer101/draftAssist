@@ -11,7 +11,7 @@ angular.module('draftAssistApp')
   // that.team = teamService.team;
 
   that.getRoster = function() {
-    platerService.getPlayers().then(function(json) {
+    playerService.getPlayers().then(function(json) {
       that.roster = json.data;
     });
   };
